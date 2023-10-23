@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>text.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<center> <u> <h1 style="font-size: 50px;"> Postgres Tutorial</h1> </u> </center>
+<h2 id="1-task-requirement-podmanpostgressql">1. Task requirement: Podman.PostgresSQL</h2>
+<h2 id="2-environment-details">2. Environment details:</h2>
+<ul>
+<li>Os:- Ubuntu 22.04.3 LTS</li>
+<li>Podman- 3.4.4</li>
+<li>Psql (PostgreSQL) 14.9</li>
+</ul>
+<h2 id="3-system-configuration">3. System configuration:</h2>
+<ul>
+<li>CPU - 4</li>
+<li>Storage -16 GB</li>
+</ul>
+<h2 id="4-definition-of-tools">4. Definition of tools:</h2>
+<ul>
+<li>
+<p>Podman is an open-source container management tool used to create, run, and manage containers on Linux systems.</p>
+</li>
+<li>
+<p>PostgreSQL ek open-source relational database management system (RDBMS)
+hai jo data storage aur management ke liye istemal hota hai.</p>
+</li>
+</ul>
+<h2 id="1-create-a-postgres-instance-of-postgres-14-with-volume-mounted">1. Create a postgres instance of postgres 14 with volume mounted.</h2>
+<blockquote>
+<p>sudo apt install -y podman</p>
+</blockquote>
+<p><img src="1.png" alt=""></p>
+<blockquote>
+<p>podman version</p>
+</blockquote>
+<p><img src="2.png" alt=""></p>
+<blockquote>
+<p>sudo mkdir -p /home/prince/postgres-data</p>
+</blockquote>
+<p><img src="3.png" alt=""></p>
+<blockquote>
+<p>podman run --name postgres -d -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -v postgres-data:/var/lib/postgresql/data postgres:14</p>
+</blockquote>
+<p><img src="5.png" alt=""></p>
+<ul>
+<li>podman run: Ye command ek container ko create aur run karne ke liye use hoti hai.</li>
+<li>-d: Ye option container ko background mode me run karne ke liye use hota hai, matlab container run hoga aur aapka terminal available rahega.</li>
+<li>--name my-postgres: Is option se aap apne container ko &quot;my-postgres&quot; naam se identify kar sakte hain.</li>
+<li>-e POSTGRES_PASSWORD=mysecretpassword: Is option se aap environment variable set kar rahe hain, jiska naam &quot;POSTGRES_PASSWORD&quot; hai aur value &quot;mysecretpassword&quot; hai. Ye password PostgreSQL database access ke liye use hoga.</li>
+<li>-v /mydata:/var/lib/postgresql/data: Is option se aap ek volume mount kar rahe hain. /mydata host system ke path ko /var/lib/postgresql/data container ke path se map karega. Isse aap apne database data ko host system me store kar sakte hain, taki wo persist kare, aur aap container ko delete karne ke baad bhi data safe rahe.</li>
+<li>'postgres:14: Ye image name hai, jise aap container se use kar rahe hain. &quot;postgres:14&quot; PostgreSQL ke version 14 ke official Docker image ko represent karta hai. Isse container PostgreSQL database server ke sath run karega.</li>
+</ul>
+<h2 id="verify-that-the-postgresql-container-is-running">Verify that the PostgreSQL container is running:</h2>
+<blockquote>
+<p>podman ps</p>
+</blockquote>
+<p><img src="6.png" alt=""></p>
+<h2 id="2create-usersdatabasestablesextensions-on-the-same">2.create users,databases,tables,extensions on the same.</h2>
+<blockquote>
+<p>podman exec -it postgres psql -U postgres</p>
+</blockquote>
+<h2 id="a-create-users">(a) Create Users</h2>
+<blockquote>
+<p>CREATE USER noida WITH PASSWORD 'noida1';
+CREATE USER delhi WITH PASSWORD 'delhi1';
+CREATE USER gurugram WITH PASSWORD 'gurugram1';
+CREATE ROLE
+CREATE ROLE
+CREATE ROLE</p>
+</blockquote>
+<p><img src="7.png" alt=""></p>
+<h2 id="b-databases">(b) Databases</h2>
+<blockquote>
+<p>postgres=# CREATE DATABASE my_database;</p>
+</blockquote>
+<p><img src="8.png" alt=""></p>
+<h2 id="c-tables">(c) Tables</h2>
+<blockquote>
+<p>postgres=# \l (List of databases)</p>
+</blockquote>
+<blockquote>
+<p>postgres=# \c (connected to database)</p>
+</blockquote>
+<blockquote>
+<p>CREATE TABLE my_table (
+id SERIAL NOT NULL PRIMARY KEY,
+name VARCHAR(255) NOT NULL
+);</p>
+</blockquote>
+<ul>
+<li>
+<p>CREATE TABLE: This keyword tells the database to create a new table.</p>
+</li>
+<li>
+<p>my_table: This is the name of the table that is being created.</p>
+</li>
+<li>
+<p>( id SERIAL NOT NULL PRIMARY KEY, name VARCHAR(255) NOT NULL ): This is the definition of the table, which includes the names and data types of the columns in the table.</p>
+</li>
+</ul>
+<h3 id="here-is-a-more-detailed-explanation-of-each-part-of-the-statement">Here is a more detailed explanation of each part of the statement:</h3>
+<ul>
+<li>
+<p>id SERIAL NOT NULL PRIMARY KEY: This column will store the unique identifier for each row in the table. The SERIAL data type means that the database will automatically generate a unique integer value for each new row that is inserted into the table. The NOT NULL constraint means that this column cannot be empty. The PRIMARY KEY constraint means that this column uniquely identifies each row in the table.</p>
+</li>
+<li>
+<p>name VARCHAR(255) NOT NULL: This column will store the name of each row in the table. The VARCHAR(255) data type means that this column can store up to 255 characters of text. The NOT NULL constraint means that this column cannot be empty.</p>
+</li>
+</ul>
+<p><img src="9.png" alt=""></p>
+<h2 id="c-extensions">(C)  extensions</h2>
+<blockquote>
+<p>CREATE EXTENSION pg_trgm;</p>
+</blockquote>
+<blockquote>
+<p>CREATE EXTENSION</p>
+</blockquote>
+<p><img src="10.png" alt=""></p>
+<p><strong>EXTENSION</strong>  Ye SQL statement PostgreSQL database mein ek extension ko create karne ya activate karne ke liye istemal hota hai. Extension ek prakar ke additional modules ya functions hote hain jo PostgreSQL database functionality ko extend karte hain.</p>
+<p><strong>pg_trgm</strong>  Ye extension PostgreSQL mein full-text search aur trigram similarity capabilities provide karta hai.
+Full-text search ka use karke, aap apne data mein text ko search kar sakte hain. Trigram similarity ka use karke, aap apne data mein text ke similarity ko calculate kar sakte hain.
+In capabilities ka use karne ke kai liye hai. For example, aap ine capabilities ka use karke ek website mein contents ko search kar sakte hain, ek database mein data ko search kar sakte hain, ya ek document collection mein documents ko search kar sakte hain.</p>
+<h3 id="3perform-crud-operations">3.Perform crud operations.</h3>
+<p><strong>CRUD (Create, Read, Update, Delete)</strong></p>
+<h3 id="acreate">(a)Create</h3>
+<p><img src="11.png" alt=""></p>
+<ul>
+<li>id: A serial column that is the primary key of the table. This means that each row in the table will have a unique id value.</li>
+<li>name: A VARCHAR column that stores the name of the hospital.</li>
+<li>address: A VARCHAR column that stores the address of the hospital.</li>
+<li>phone: A VARCHAR column that stores the phone number of the hospital.</li>
+<li>NOT NULL: constraint on all of the columns means that each column must have a value. No rows will be inserted into the table if any of the columns are empty.</li>
+<li>VARCHAR : is a variable-length string data type in SQL. It means that it can store strings of any length, up to the maximum length specified when the column is created. It is a good choice for storing strings of variable length, such as names, addresses, and phone numbers.</li>
+</ul>
+<h2 id="b-read">(b) Read</h2>
+<blockquote>
+<p>my_database=# select * from hospitals;</p>
+</blockquote>
+<p><img src="12.png" alt=""></p>
+<h2 id="c--update">(C ) Update</h2>
+<p><img src="13.png" alt=""></p>
+<blockquote>
+<p>UPDATE laptops SET price = '2,49,900' WHERE id = 1;</p>
+</blockquote>
+<p><img src="14.png" alt=""></p>
+<h2 id="d-delete">(D) Delete</h2>
+<blockquote>
+<p>dall=# DELETE FROM laptops WHERE id = 1;</p>
+</blockquote>
+<p><img src="15.png" alt=""></p>
+<h2 id="4-create-three-users-with-a-password">4. Create three users with a password.</h2>
+<blockquote>
+<p>CREATE ROLE user 1 WITH LOGIN PASSWORD 'password1';
+CREATE ROLE user 2 WITH LOGIN PASSWORD 'password2';
+CREATE ROLE user 3WITH LOGIN PASSWORD 'password3';</p>
+</blockquote>
+<p><img src="16.png" alt=""></p>
+<blockquote>
+<p>\du (User show)</p>
+</blockquote>
+<p><img src="17.png" alt=""></p>
+<h2 id="5-grant-select-permission-for-user1selectinsertdelete-for-user2-and-all-for-user3">5. Grant select permission for user1,select,insert,delete for user2 and all for user3.</h2>
+<blockquote>
+<p>GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO user3;</p>
+</blockquote>
+<p><img src="18.png" alt=""></p>
+<h2 id="6-take-the-dump-of-this-table-and-insert-it-in-the-test-database">6. Take the dump of this table and insert it in the test database.</h2>
+<blockquote>
+<p>pg_dump -U your_superuser -d your_source_database -t your_table_name -f dump_file_name.sql</p>
+</blockquote>
+<p><img src="19.png" alt=""></p>
+<blockquote>
+<p>DUMP file restore</p>
+</blockquote>
+<p><img src="20.png" alt=""></p>
+<h2 id="7-create-a-replica-of-the-same">7. Create a replica of the same.</h2>
+<blockquote>
+<p>podman network create --subnet=172.18.0.0/24 postnetwork**</p>
+</blockquote>
+<p><img src="21.png" alt=""></p>
+<h2 id="a-make-directory">(a) Make Directory</h2>
+<blockquote>
+<p>mkdir -p /home/praveen/data/psql/master mkdir -p /home/praveen/data/psql/slave mkdir -p /home/praveen/data/psql/repl
+Make Directorypodman unshare chown -R 999:999 /home/praveen/data/psql/master podman unshare chown -R 999:999 /home/parveen/data/psql/slave podman unshare chown -R 999:999 /home/praveen/data/psql/repl</p>
+</blockquote>
+<h2 id="1-a-master-container">(1) (a) Master container</h2>
+<blockquote>
+<p>podman run -d <br>
+--network postnetwork --ip 172.18.0.101 -p 5432:5432 <br>
+--name master -h master <br>
+-e &quot;POSTGRES_DB=postgres&quot; <br>
+-e &quot;POSTGRES_USER=postgres&quot; <br>
+-e &quot;POSTGRES_PASSWORD=redhat&quot; <br>
+-v /home/praveen/data/psql/master:/var/lib/postgresql/data <br>
+docker.io/postgres</p>
+</blockquote>
+<p><img src="22.png" alt=""></p>
+<h2 id="2-a-slave-container">2 (a) Slave container</h2>
+<blockquote>
+<p>podman run -d <br>
+--network postnetwork --ip 172.18.0.102 -p 5433:5432 <br>
+--name slave -h slave <br>
+-e &quot;POSTGRES_DB=postgres&quot; <br>
+-e &quot;POSTGRES_USER=postgres&quot; <br>
+-e &quot;POSTGRES_PASSWORD=redhat&quot; <br>
+-v /home/praveen/data/psql/slave:/var/lib/postgresql/data <br>
+-v /home/praveen/data/psql/repl:/var/lib/postgresql/repl <br>
+docker.io/postgres</p>
+</blockquote>
+<p><img src="22.png" alt=""></p>
+<p><strong>1.(a)</strong>
+<strong>(MASTER SARVAR)</strong></p>
+<blockquote>
+<p>podman exec -it master bash
+psql -U postgres</p>
+</blockquote>
+<p><img src="23.png" alt=""></p>
+<p><strong>(b)</strong></p>
+<blockquote>
+<p>postgres=# CREATE ROLE repuser WITH LOGIN REPLICATION CONNECTION LIMIT 5 PASSWORD 'redhat';</p>
+</blockquote>
+<p><img src="24.png" alt=""></p>
+<blockquote>
+<p>\du</p>
+</blockquote>
+<p><img src="25.png" alt=""></p>
+<blockquote>
+<p>cd /home/ppraveen/data/psql/master</p>
+</blockquote>
+<p><img src="27.png" alt=""></p>
+<p><strong>(d)</strong></p>
+<blockquote>
+<p>vim postgresql.conf
+archive_mode = on				# Enable Archive Mode
+archive_command = '/bin/date'	# Set archiving behavior
+#The sum of the number of concurrent connections from the slave to the host
+max_wal_senders = 10			
+#Specifies that if the backup server needs to obtain log segment files for stream replication, pg_ The minimum size of past log file segments that can be retained in the wal directory	
+wal_keep_size = 16		
+#Specify a list of backup servers that support synchronous replication
+synchronous_standby_names = '*'</p>
+</blockquote>
+<p><img src="28.png" alt=""></p>
+<p><strong>2. (a) SLAVE  container</strong></p>
+<blockquote>
+<p>podman exec -it -u postgres slave /bin/bash</p>
+</blockquote>
+<blockquote>
+<p>postgres@slave:/$ pg_basebackup -R -D /var/lib/postgresql/repl -Fp -Xs -v -P -h 172.18.0.101 -p 5432 -U repuser</p>
+</blockquote>
+<p><img src="29.png" alt=""></p>
+<h2 id="8-create-a-new-schema">8. Create a new schema</h2>
+<blockquote>
+<p>create schema myschema;</p>
+</blockquote>
+<p><img src="30.png" alt=""></p>
+<blockquote>
+<p>\dn (show schema)</p>
+</blockquote>
+<p><img src="31.png" alt=""></p>
+<blockquote>
+<p>create table myschema.company</p>
+</blockquote>
+<p><img src="32.png" alt=""></p>
+<blockquote>
+<p>select * from myschema.company;</p>
+</blockquote>
+<p><img src="33.png" alt=""></p>
+<h2 id="9-create-extensions-in-the-new-schema">9. Create extensions in the new schema.</h2>
+<blockquote>
+<p>\dx (extensions show)</p>
+</blockquote>
+<p><img src="34.png" alt=""></p>
+<p><strong>Plpgsql:-</strong>  ek PostgreSQL extension hai, jiska matlab &quot;Procedural Language/PostgreSQL&quot; hota hai. Ye extension PostgreSQL mein stored procedures, functions, aur triggers likhne ke liye ek procedural programming language provide karta hai. plpgsql PostgreSQL database mein built-in tariko se PostgreSQL ke features aur data par programmatic control dene me madad karta hai.</p>
+<h3 id="10-create-another-table-and-explain-about-the-different-joins">10. Create another table and explain about the different joins.</h3>
+<p><strong>Different types of joins:</strong></p>
+<ul>
+<li>Inner join: Returns all rows from both tables where the join condition is met.</li>
+</ul>
+<blockquote>
+<p>CREATE TABLE best_android_phones</p>
+</blockquote>
+<p><img src="35.png" alt=""></p>
+<blockquote>
+<p>INSERT INTO best_android_phones</p>
+</blockquote>
+<p><img src="36.png" alt=""></p>
+<blockquote>
+<p>\dt</p>
+</blockquote>
+<p><img src="37.png" alt=""></p>
+<blockquote>
+<p>select * from best_android_phones;</p>
+</blockquote>
+<p><img src="38.png" alt=""></p>
+<blockquote>
+<p>CREATE TABLE ratings</p>
+</blockquote>
+<p><img src="39.png" alt=""></p>
+<blockquote>
+<p>INSERT INTO ratings</p>
+</blockquote>
+<p><img src="40.png" alt=""></p>
+<blockquote>
+<p>INNER JOIN</p>
+</blockquote>
+<p><img src="41.png" alt=""></p>
+<h3 id="11-understanding-the-table-structurefinding-database-size-table-size-etc">11. Understanding the table structure,finding database size, table size etc.</h3>
+<p><strong>(a) Table structure</strong></p>
+<blockquote>
+<p>(\d table name)</p>
+</blockquote>
+<p><img src="42.png" alt=""></p>
+<ul>
+<li>This will list the name, data type, and other information about each column in the table.</li>
+</ul>
+<p><strong>(b) finding database size</strong></p>
+<p><img src="43.png" alt=""></p>
+<p><strong>(c) table size</strong></p>
+<p><img src="44.png" alt=""></p>
+<h2 id="12-create-a-new-table-with-the-data-and-structure-of-the">12. Create a new table with the data and structure of the</h2>
+<ul>
+<li>old table.</li>
+</ul>
+<p><strong>(a)</strong></p>
+<blockquote>
+<p>SQL
+CREATE TABLE new_students AS (
+SELECT id, name, email FROM students
+);</p>
+</blockquote>
+<blockquote>
+<p>\dt  (table show )</p>
+</blockquote>
+<p><img src="43.png" alt=""></p>
+<blockquote>
+<p>select * from students; ( table show )</p>
+</blockquote>
+<p><img src="46.png" alt=""></p>
+<p><strong>(b)</strong></p>
+<blockquote>
+<p>CREATE TABLE new_students AS (
+SELECT * FROM students
+);</p>
+</blockquote>
+<p><img src="47.png" alt=""></p>
+<blockquote>
+<p>COPY new_students FROM students;</p>
+</blockquote>
+<blockquote>
+<p>SELECT * FROM new_students;</p>
+</blockquote>
+<p><img src="48.png" alt=""></p>
+<blockquote>
+<p>\dt</p>
+</blockquote>
+<p><img src="49.png" alt=""></p>
+<h2 id="13-what-are-indexessequencestriggersunionlocksmaterialised-viewsfunctions-etc-with-examples-wrt-your-setup">13. What are indexes,sequences,triggers,union,locks,materialised views,functions etc. with examples w.r.t your setup .</h2>
+<p><strong>(a) indexes</strong></p>
+<ul>
+<li>indexes ek aise data structure hain jo PostgreSQL ko data ko quickly find karne mein madad karte hain। ve ek ya adhik columns per create hote hain, aur ve un columns ke values ko sorted order mein store karte hain। yah PostgreSQL ko ek table mein rows ko quickly find karne ki anumati deta hai jo ek diye gaye value in range of values ke sath match karti hain।</li>
+</ul>
+<blockquote>
+<p>CREATE INDEX idx_contractor_name ON contractor (contractor_name);</p>
+</blockquote>
+<p><img src="50.png" alt=""></p>
+<blockquote>
+<p>SELECT *
+FROM contractor
+WHERE contractor_name = 'praveen';</p>
+</blockquote>
+<p><img src="51.png" alt=""></p>
+<p><strong>(b) sequence</strong></p>
+<ul>
+<li>sequence ek aisi object hai jo unique numbers generate karti hai। unka upyog kabhi-kabhi tables ke liye primary key values generate karne ke liye kiya jata hai।</li>
+</ul>
+<p><img src="52.png" alt=""></p>
+<p><img src="53.png" alt=""></p>
+<p><img src="54.png" alt=""></p>
+<p><strong>trigger</strong></p>
+<ul>
+<li>trigger ek aise procedure hain jo automatically execute hote hain jab table per kuchh events hoti hain। ek example yah hai ki aap ek trigger create kar sakte hain jo ek naye row ko students table mein insert kiye jaane ke bad execute kiya jaaye। yah trigger fir school principal ko email notification send kar sakta hai।</li>
+</ul>
+<p><strong>Trigger name is ‘ Backup’ table whenever data is deleted from ‘main’ table.</strong></p>
+<blockquote>
+<p>create table linux
+(
+id int,
+salary int);</p>
+</blockquote>
+<p><img src="55.png" alt=""></p>
+<blockquote>
+<p>insert into linux values(1,10000);
+insert into linux values(2,20000);</p>
+</blockquote>
+<p><img src="56.png" alt=""></p>
+<blockquote>
+<p>Create  table backup
+(   id  int,
+Salary int);</p>
+</blockquote>
+<p><img src="57.png" alt=""></p>
+<blockquote>
+<p>CREATE OR REPLACE FUNCTION backup_function() RETURNS TRIGGER AS
+BEGIN
+INSERT INTO backup VALUES (OLD.id, OLD.salary);
+RETURN OLD;
+END;
+$$ LANGUAGE plpgsql;
+CREATE TRIGGER t1
+BEFORE DELETE ON linux
+FOR EACH ROW
+EXECUTE FUNCTION backup_function();</p>
+</blockquote>
+<p><img src="58.png" alt=""></p>
+<blockquote>
+<p>delete from linux where id=1;</p>
+</blockquote>
+<p><img src="59.png" alt=""></p>
+<p><img src="60.png" alt=""></p>
+<ul>
+<li>After show backup table</li>
+</ul>
+<p><img src="61.png" alt=""></p>
+<p><strong>union</strong></p>
+<ul>
+<li>union operator ka upyog 2 ya adhik SELECT statements ki results ko combine karne ke liye kiya jata hai। union operation ki results first column ke ascending order mein sort ki jaati hai</li>
+</ul>
+<blockquote>
+<p>SELECT * FROM new_students UNION SELECT * FROM person UNION SELECT * FROM students;</p>
+</blockquote>
+<p><img src="62.png" alt=""></p>
+<blockquote>
+<p>ALTER TABLE students ADD COLUMN major VARCHAR(255);</p>
+</blockquote>
+<p><img src="63.png" alt=""></p>
+<p><strong>lock</strong></p>
+<ul>
+<li>lock ka upyog dusron ko aapke data ko modify karne se rokne ke liye kiya jata hai jo aap abhi modify kar rahe hain। yah data ki integrity ko ensure karne mein madad karta hai।</li>
+</ul>
+<blockquote>
+<p>collage=# select *from students;</p>
+</blockquote>
+<p><img src="64.png" alt=""></p>
+<blockquote>
+<p>BEGIN;
+LOCK TABLE students IN SHARE MODE;
+-- Access the students table
+COMMIT;
+BEGIN
+LOCK TABLE
+COMMIT</p>
+</blockquote>
+<p><img src="65.png" alt=""></p>
+<p><strong>materialised view</strong></p>
+<ul>
+<li>materialised view table ke data ke precomputed views hain। unka upyog frequently executed queries ki performance improve karne ke liye kiya jata hai।</li>
+</ul>
+<blockquote>
+<p>CREATE MATERIALIZED VIEW new_students_materialized AS
+SELECT *</p>
+</blockquote>
+<p><img src="66.png" alt=""></p>
+<blockquote>
+<p>collage=# SELECT name, father_name
+FROM new_students_materialized_view;</p>
+</blockquote>
+<p><img src="67.png" alt=""></p>
+<p><strong>function</strong></p>
+<ul>
+<li>
+<p>function user-defined procedures hain jin ka upyog common tasks ko perform karne ke liye kiya ja sakta hai, jaise data ko format karna, values calculate karna, aur data ko validate karna।</p>
+</li>
+<li>
+<p>function to calculate the age:</p>
+</li>
+</ul>
+<blockquote>
+<p>CREATE OR REPLACE FUNCTION calculate_age(date_of_birth date) RETURNS integer AS $$
+DECLARE
+age_in_years integer;
+BEGIN
+SELECT EXTRACT(YEAR FROM age(date_of_birth)) INTO age_in_years;
+RETURN age_in_years;
+END;LANGUAGE plpgsql;</p>
+</blockquote>
+<p><img src="68.png" alt=""></p>
+<ul>
+<li>Now, you can use the calculate_age function to calculate the age of a person based on their birthdate. For example:</li>
+</ul>
+<p><img src="69.png" alt=""></p>
+
+</body>
+</html>
