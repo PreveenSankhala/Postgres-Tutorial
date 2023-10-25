@@ -1,0 +1,22 @@
+#  Postgres Tutorial
+
+1. Task requirement: Podman.PostgresSQL
+
+2. Environment details: 
+Os:- Ubuntu 22.04.3 LTS
+Podman- 3.4.4
+Psql (PostgreSQL) 14.9
+
+3. System configuration:
+CPU - 4
+Storage -16 GB
+
+Definition of tools:
+
+Podman is an open-source container management tool used to create, run, and manage containers on Linux systems.
+
+PostgreSQL ek open-source relational database management system (RDBMS) 
+hai jo data storage aur management ke liye istemal hota hai.
+
+
+
