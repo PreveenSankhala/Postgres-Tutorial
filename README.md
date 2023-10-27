@@ -101,12 +101,14 @@ CREATE TABLE my_table (
 );
 ```
 ```
-postgres=# \l (List of databases) 
+postgres=# \l 
 ```
+- (List of databases)
+  
 ```
-postgres=# \c (connected to database)
+postgres=# \c
 ```
-
+- (connected to database)
 
 - CREATE TABLE: This keyword tells the database to create a new table.
   
@@ -125,9 +127,7 @@ postgres=# \c (connected to database)
 ```
 CREATE EXTENSION pg_trgm;
 ```
-```
-CREATE EXTENSION
-```
+
 ![](10.png)
 
   **EXTENSION**  Ye SQL statement PostgreSQL database mein ek extension ko create karne ya activate karne ke liye istemal hota hai. Extension ek prakar ke additional modules ya functions hote hain jo PostgreSQL database functionality ko extend karte hain.
