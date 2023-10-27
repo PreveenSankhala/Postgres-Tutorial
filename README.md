@@ -95,6 +95,10 @@ postgres=# CREATE DATABASE my_database;
 ## (c) Tables
 
 ```
+\c my_database;
+```
+
+```
 CREATE TABLE my_table (
   id SERIAL NOT NULL PRIMARY KEY,
   name VARCHAR(255) NOT NULL
