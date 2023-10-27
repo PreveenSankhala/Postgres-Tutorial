@@ -1,4 +1,4 @@
-<center> <u> <h1 style="font-size: 50px;"> Postgres Tutorial</h1> </u> </center>
+<center> <u> <h1 style="font-size: 50px;"> Postgres setup</h1> </u> </center>
 
 ## Table of contents
 **1. Task requirement**
@@ -32,22 +32,22 @@ hai jo data storage aur management ke liye istemal hota hai.
 
 
 ## 1. Create a postgres instance of postgres 14 with volume mounted.
-
->sudo apt install -y podman
-
+```
+sudo apt install -y podman
+```
 ![](1.png)
-
->podman version
-
+```
+podman version
+```
 ![](2.png)
-
->sudo mkdir -p /home/prince/postgres-data
-
+```
+sudo mkdir -p /home/prince/postgres-data
+```
 ![](3.png)
 
-
->podman run --name postgres -d -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -v postgres-data:/var/lib/postgresql/data postgres:14
-
+```
+podman run --name postgres -d -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -v postgres-data:/var/lib/postgresql/data postgres:14
+```
 ![](5.png)
 
 
@@ -59,16 +59,16 @@ hai jo data storage aur management ke liye istemal hota hai.
 - 'postgres:14: Ye image name hai, jise aap container se use kar rahe hain. "postgres:14" PostgreSQL ke version 14 ke official Docker image ko represent karta hai. Isse container PostgreSQL database server ke sath run karega.
 
 ## Verify that the PostgreSQL container is running:
-
->podman ps
-
+```
+podman ps
+```
 ![](6.png)
 
 
 ## 2.create users,databases,tables,extensions on the same.
-
->podman exec -it postgres psql -U postgres
-
+```
+podman exec -it postgres psql -U postgres
+```
 
 
 ## (a) Create Users
