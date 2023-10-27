@@ -104,15 +104,6 @@ CREATE TABLE my_table (
   name VARCHAR(255) NOT NULL
 );
 ```
-```
-postgres=# \l 
-```
-- (List of databases)
-  
-```
-postgres=# \c
-```
-- (connected to database)
 
 - CREATE TABLE: This keyword tells the database to create a new table.
   
