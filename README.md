@@ -72,21 +72,21 @@ podman exec -it postgres psql -U postgres
 
 
 ## (a) Create Users
-
->CREATE USER noida WITH PASSWORD 'noida1';
+```
+CREATE USER noida WITH PASSWORD 'noida1';
 CREATE USER delhi WITH PASSWORD 'delhi1';
 CREATE USER gurugram WITH PASSWORD 'gurugram1';
 CREATE ROLE
 CREATE ROLE
 CREATE ROLE
-
+```
 ![](7.png)
 
 
 ## (b) Databases
-
->postgres=# CREATE DATABASE my_database;
-
+```
+postgres=# CREATE DATABASE my_database;
+```
 
 ![](8.png)
 
@@ -94,16 +94,18 @@ CREATE ROLE
 
 ## (c) Tables
 
->postgres=# \l (List of databases) 
-
->postgres=# \c (connected to database)
-
-
->CREATE TABLE my_table (
+```
+CREATE TABLE my_table (
   id SERIAL NOT NULL PRIMARY KEY,
   name VARCHAR(255) NOT NULL
 );
-
+```
+```
+postgres=# \l (List of databases) 
+```
+```
+postgres=# \c (connected to database)
+```
 
 
 - CREATE TABLE: This keyword tells the database to create a new table.
@@ -120,11 +122,12 @@ CREATE ROLE
 
 
 ## (C)  extensions
-
->CREATE EXTENSION pg_trgm;
-
->CREATE EXTENSION
-
+```
+CREATE EXTENSION pg_trgm;
+```
+```
+CREATE EXTENSION
+```
 ![](10.png)
 
   **EXTENSION**  Ye SQL statement PostgreSQL database mein ek extension ko create karne ya activate karne ke liye istemal hota hai. Extension ek prakar ke additional modules ya functions hote hain jo PostgreSQL database functionality ko extend karte hain.
