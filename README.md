@@ -31,7 +31,7 @@ hai jo data storage aur management ke liye istemal hota hai.
 
 
 
-## 1. Create a postgres instance of postgres 14 with volume mounted.
+## 1. Create a postgres container.
 ```
 sudo apt install -y podman
 ```
@@ -41,12 +41,12 @@ podman version
 ```
 ![](2.png)
 ```
-sudo mkdir -p /home/prince/postgres-data
+podman pull postgres
 ```
 ![](3.png)
 
 ```
-podman run --name postgres -d -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -v postgres-data:/var/lib/postgresql/data postgres:14
+podman run --name my-postgres-container -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_DB=mydatabase -d postgres
 ```
 ![](5.png)
 
@@ -67,7 +67,8 @@ podman ps
 
 ## 2.create users,databases,tables,extensions on the same.
 ```
-podman exec -it postgres psql -U postgres
+podman exec -it my-postgres-container psql -U postgres
+
 ```
 
 
