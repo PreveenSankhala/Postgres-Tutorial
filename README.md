@@ -234,7 +234,7 @@ GRANT ALL PRIVILEGES ON public.users TO user3;
 
 
 
-### 11. Understanding the table structure,finding database size, table size etc.
+### 6. Understanding the table structure,finding database size, table size etc.
 
 **(a) Table structure**
 
