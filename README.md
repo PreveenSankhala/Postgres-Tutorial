@@ -219,7 +219,7 @@ GRANT SELECT ON public.users TO user1;
 GRANT SELECT, INSERT, DELETE ON public.users TO user2;
 ```
 
-- user3 ko ALL permissions dena:
+- Give all permissions to user3
 ```
 GRANT ALL PRIVILEGES ON public.users TO user3;
 ```
