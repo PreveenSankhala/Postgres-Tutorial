@@ -10,7 +10,7 @@
 **4. Definition of tools**
 
 
-## 1. Task requirement: Podman.PostgresSQL
+## 1. Task requirement: Podman.PostgresSQLCREATE ROLE user 2 WITH LOGIN PASSWORD 'password2';
 
 ## 2. Environment details: 
 - Os:- Ubuntu 22.04.3 LTS
@@ -191,10 +191,12 @@ DELETE FROM users WHERE id = 1;
 CREATE ROLE user1 WITH LOGIN PASSWORD 'password1';
 ```
 ```
-CREATE ROLE user 2 WITH LOGIN PASSWORD 'password2';
+CREATE ROLE user2 WITH LOGIN PASSWORD 'password2';
+
 ```
 ```
-CREATE ROLE user 3WITH LOGIN PASSWORD 'password3';
+CREATE ROLE user3 WITH LOGIN PASSWORD 'password3';
+
 ```
 
 ![](16.png)
