@@ -41,12 +41,10 @@ podman version
 ```
 ![](2.png)
 ```
-podman pull postgres
-```
-![](3.png)
 
 ```
-podman run --name my-postgres-container -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_DB=mydatabase -d postgres
+podman run --name postgres-container -e POSTGRES_PASSWORD=mysecretpassword -d -p 5432:5432 postgres
+
 ```
 ![](5.png)
 
@@ -67,7 +65,8 @@ podman ps
 
 ## 2.create users,databases,tables,extensions on the same.
 ```
-podman exec -it my-postgres-container psql -U postgres
+podman exec -it postgres-container psql -U postgres
+
 
 ```
 
