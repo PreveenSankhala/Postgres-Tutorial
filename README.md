@@ -74,9 +74,6 @@ podman exec -it postgres-container psql -U postgres
 CREATE USER noida WITH PASSWORD 'noida1';
 CREATE USER delhi WITH PASSWORD 'delhi1';
 CREATE USER gurugram WITH PASSWORD 'gurugram1';
-CREATE ROLE
-CREATE ROLE
-CREATE ROLE
 ```
 ![](7.png)
 
