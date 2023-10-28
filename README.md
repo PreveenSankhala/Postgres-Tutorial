@@ -207,7 +207,22 @@ CREATE ROLE user3 WITH LOGIN PASSWORD 'password3';
 
 ## 5. Grant select permission for user1,select,insert,delete for user2 and all for user3.
 
->GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO user3;
+- Granting selection permission to user1:
+
+```
+GRANT SELECT ON public.users TO user1;
+```
+
+- To grant select, insert, and delete permissions to user2:
+
+```
+GRANT SELECT, INSERT, DELETE ON public.users TO user2;
+```
+
+- user3 ko ALL permissions dena:
+```
+GRANT ALL PRIVILEGES ON public.users TO user3;
+```
 
 ![](18.png)
 
