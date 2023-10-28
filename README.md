@@ -98,10 +98,13 @@ CREATE DATABASE my_database;
 ```
 
 ```
-CREATE TABLE my_table (
-  id SERIAL NOT NULL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL
+     CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    email VARCHAR(100) UNIQUE
 );
+
 ```
 
 - CREATE TABLE: This keyword tells the database to create a new table.
@@ -138,7 +141,8 @@ In capabilities ka use karne ke kai liye hai. For example, aap ine capabilities 
 
 ### (a)Create 
 ```
-INSERT INTO my_table (name, age) VALUES ('John', 30);
+INSERT INTO users (first_name, last_name, email) VALUES ('John', 'Doe', 'john.doe@example.com');
+
 ```
 
 ![](11.png)
@@ -155,7 +159,8 @@ INSERT INTO my_table (name, age) VALUES ('John', 30);
 
 ## (b) Read
 ```
-SELECT * FROM my_table;
+SELECT * FROM users;
+
 ```
 
 ![](12.png)
@@ -165,14 +170,16 @@ SELECT * FROM my_table;
 
 ![](13.png)
 ```
-UPDATE my_table SET age = 31 WHERE name = 'John';
+UPDATE users SET email = 'new.email@example.com' WHERE id = 1;
+
 ```
 
 ![](14.png)
 
 ## (D) Delete
 ```
-DELETE FROM my_table WHERE name = 'John';
+DELETE FROM users WHERE id = 1;
+
 ```
 
 ![](15.png)
