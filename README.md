@@ -40,7 +40,6 @@ sudo apt install -y podman
 podman version
 ```
 ![](2.png)
-```
 
 ```
 podman run --name postgres-container -e POSTGRES_PASSWORD=mysecretpassword -d -p 5432:5432 postgres
@@ -66,7 +65,6 @@ podman ps
 ## 2.create users,databases,tables,extensions on the same.
 ```
 podman exec -it postgres-container psql -U postgres
-
 
 ```
 
