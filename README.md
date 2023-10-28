@@ -137,6 +137,9 @@ In capabilities ka use karne ke kai liye hai. For example, aap ine capabilities 
 **CRUD (Create, Read, Update, Delete)**
 
 ### (a)Create 
+```
+INSERT INTO my_table (name, age) VALUES ('John', 30);
+```
 
 ![](11.png)
 
@@ -151,8 +154,9 @@ In capabilities ka use karne ke kai liye hai. For example, aap ine capabilities 
 
 
 ## (b) Read
-
->my_database=# select * from hospitals;
+```
+SELECT * FROM my_table;
+```
 
 ![](12.png)
 
@@ -160,14 +164,16 @@ In capabilities ka use karne ke kai liye hai. For example, aap ine capabilities 
 ## (C ) Update
 
 ![](13.png)
-
->UPDATE laptops SET price = '2,49,900' WHERE id = 1;
+```
+UPDATE my_table SET age = 31 WHERE name = 'John';
+```
 
 ![](14.png)
 
 ## (D) Delete
-
->dall=# DELETE FROM laptops WHERE id = 1;
+```
+DELETE FROM my_table WHERE name = 'John';
+```
 
 ![](15.png)
 
