@@ -198,7 +198,9 @@ CREATE ROLE user2 WITH LOGIN PASSWORD 'password2';
 CREATE ROLE user3 WITH LOGIN PASSWORD 'password3';
 
 ```
-
+```
+\du
+```
 ![](16.png)
 
 
