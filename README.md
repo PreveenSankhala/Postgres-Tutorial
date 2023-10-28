@@ -46,7 +46,7 @@ podman version
 podman run --name postgres-container -e POSTGRES_PASSWORD=mysecretpassword -d -p 5432:5432 postgres
 
 ```
-![](5.png)
+![](podman pod.png)
 
 
 - podman run: Ye command ek container ko create aur run karne ke liye use hoti hai.
