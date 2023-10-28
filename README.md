@@ -201,6 +201,8 @@ CREATE ROLE user3 WITH LOGIN PASSWORD 'password3';
 ```
 \du
 ```
+-show user
+
 ![](16.png)
 
 
