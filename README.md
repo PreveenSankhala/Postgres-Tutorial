@@ -187,15 +187,14 @@ DELETE FROM users WHERE id = 1;
 
 
 ## 4. Create three users with a password.
-
->CREATE ROLE user 1 WITH LOGIN PASSWORD 'password1';
+```
+CREATE ROLE user 1 WITH LOGIN PASSWORD 'password1';
 CREATE ROLE user 2 WITH LOGIN PASSWORD 'password2';
 CREATE ROLE user 3WITH LOGIN PASSWORD 'password3';
-
+```
 
 ![](16.png)
 
->\du (User show)
 
 ![](17.png)
 
