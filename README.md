@@ -99,11 +99,12 @@ CREATE DATABASE my_database;
 
 ```
      CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     first_name VARCHAR(50),
     last_name VARCHAR(50),
     email VARCHAR(100) UNIQUE
 );
+
 
 ```
 
