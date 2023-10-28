@@ -236,26 +236,44 @@ GRANT ALL PRIVILEGES ON public.users TO user3;
 
 ### 6. Understanding the table structure,finding database size, table size etc.
 
-**(a) Table structure**
+**INSERT INTO**
+```
+INSERT INTO users (first_name, last_name, email)
+VALUES
+    ('John', 'Doe', 'john.doe@example.com'),
+    ('Jane', 'Smith', 'jane.smith@example.com'),
+    ('Alice', 'Johnson', 'alice.johnson@example.com'),
+    ('Bob', 'Brown', 'bob.brown@example.com'),
+    ('Eva', 'Davis', 'eva.davis@example.com'),
+    ('Michael', 'Lee', 'michael.lee@example.com'),
+    ('Samantha', 'Taylor', 'samantha.taylor@example.com'),
+    ('William', 'Anderson', 'william.anderson@example.com'),
+    ('Olivia', 'Moore', 'olivia.moore@example.com'),
+    ('Daniel', 'Wilson', 'daniel.wilson@example.com');
+```
 
->(\d table name)
+
+**(a) Table structure**
+```
+\d users
+```
 
 ![](42.png)
-
-- This will list the name, data type, and other information about each column in the table.
-
 
 
 
 **(b) finding database size**
-
+```
+SELECT pg_size_pretty(pg_database_size(current_database()));
+```
 ![](43.png)
 
 
 
 **(c) table size**
-
-
+```
+SELECT pg_size_pretty(pg_total_relation_size('users'));
+```
 ![](44.png)
 
 
