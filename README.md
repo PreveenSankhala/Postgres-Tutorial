@@ -42,7 +42,8 @@ podman version
 ![](2.png)
 
 ```
-podman run --name postgres-container -e POSTGRES_PASSWORD=mysecretpassword -d -p 5432:5432 postgres
+podman run --name postgres-container -e POSTGRES_PASSWORD=mysecretpassword -d -p 5432:5432 postgres:latest
+
 
 ```
 ![](podman pod.png)
