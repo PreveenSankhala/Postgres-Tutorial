@@ -83,7 +83,8 @@ CREATE ROLE
 
 ## (b) Databases
 ```
-postgres=# CREATE DATABASE my_database;
+CREATE DATABASE my_database;
+
 ```
 
 ![](8.png)
